@@ -66,3 +66,19 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.bi-arrow-left-circle{
+  font-size: 3rem;
+}
+
+.bi-arrow-left-circle:hover{
+  color: #5c5470;
+}
+
+.bi-arrow-right-circle{
+  font-size: 3rem;
+}
+
+.bi-arrow-right-circle:hover{
+  color: #5c5470;
+}
