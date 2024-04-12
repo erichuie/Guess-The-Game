@@ -3,6 +3,7 @@ certifi==2023.11.17
 charset-normalizer==3.3.2
 click==8.1.7
 Flask==2.3.3
+Flask-Cors==4.0.0
 Flask-DebugToolbar @ git+https://github.com/pallets-eco/flask-debugtoolbar@b7f5a725cd7840d4f04b8483c2c1c93e8cff9cb2
 Flask-WTF==1.2.1
 idna==3.6

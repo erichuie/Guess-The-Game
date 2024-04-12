@@ -1,15 +1,20 @@
 import os
+from dotenv import load_dotenv
 
 from flask import Flask, render_template, jsonify, g
+from flask_cors import CORS
 from flask_debugtoolbar import DebugToolbarExtension
 # from forms import GuessGameForm
 import random
 import requests
 
+# load_dotenv()
+
 app = Flask(__name__)
+CORS(app)
 
 app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
-toolbar = DebugToolbarExtension(app)
+# toolbar = DebugToolbarExtension(app)
 
 RAWG_API = "https://api.rawg.io/api"
 API_KEY = os.environ['API_KEY']
@@ -43,18 +48,29 @@ def create_new_game():
     randomGameInfoDict = randomGameInfoResponse.json()
     randomGameImagesDict = randomGameImagesResponse.json()
 
+    # for result in randomGameImagesDict["results"]:
+    #     game_images.append(result["image"])
+
     for result in randomGameImagesDict["results"]:
         game_images.append(result["image"])
 
-    g.game_name = randomGameInfoDict["name"]
-    g.game_images = game_images
+    # g.game_name = randomGameInfoDict["name"]
+    # g.game_images = game_images
 
-    response_dict["start_image"] = game_images[0]
-    response_dict["image_num"] = 0
+
+    response_dict["images"] = game_images
+
+    # response_dict["start_image"] = game_images[0]
+    # response_dict["image_num"] = 0
+
+    print("contents of dict",response_dict)
 
     return jsonify(response_dict)
 
-
+# @app.get('/awake')
+# def create_new_game():
+#     """test to keep backend awake and prevent spindown"""
+#     print("awake")
 
 
 # @app.route('/guess-game', methods=["GET","POST"])
